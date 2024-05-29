@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   db:
@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: mydatabase
+      POSTGRES_DB: gadgets
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -22,7 +22,7 @@ services:
       DATABASE_PORT: 5432
       DATABASE_USER: postgres
       DATABASE_PASSWORD: postgres
-      DATABASE_NAME: mydatabase
+      DATABASE_NAME: gadgets
     depends_on:
       - db
     volumes:
@@ -30,6 +30,7 @@ services:
       - /usr/src/app/node_modules
     ports:
       - "3000:3000"
+      - "5555:5555"
     command: npm run start:dev
 
 volumes:
