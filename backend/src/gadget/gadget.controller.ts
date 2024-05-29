@@ -1,13 +1,17 @@
 import { Controller, Get } from '@nestjs/common';
 import { GadgetService } from './gadget.service';
-import { Gadgets } from '@prisma/client';
 
-@Controller()
+@Controller('gadgets')
 export class GadgetController {
-  constructor(private readonly appService: GadgetService) {}
+  constructor(private readonly gadgetService: GadgetService) {}
 
-  @Get()
-  getHello(): Promise<Gadgets> {
-    return this.appService.getHello();
+  @Get('create')
+  getHello() {
+    return this.gadgetService.getHello();
+  }
+
+  @Get('getAll')
+  getAllGadgets() {
+    return this.gadgetService.getAllGadgets();
   }
 }
